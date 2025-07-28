@@ -91,6 +91,21 @@ const modelsData = [
         ],
         preview: `${RAW_BASE_REPO_URL}/FPV_ANT_mount/4.jpg`,
         detailsUrl: `${BASE_REPO_URL}/FPV_ANT_mount`
+    },
+
+    {
+        id: 'front_vtx_ant_mount_wings',
+        title: 'Кріплення антен на передню частину рами (wings)',
+        tags: ['antenna', 'mark4v1', 'mark4v2', 'mount', 'xl10v6', 'xl10v7'],
+        category: 'fpv-antenna-mounts',
+        descriptionFile: 'descriptions/front_vtx_ant_mount_wings.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/xl10v7.png`,
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/sma_wings.png`,
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/5.png`,
+        ],
+        preview: `${RAW_BASE_REPO_URL}/FPV_ANT_mount/5.png`,
+        detailsUrl: `${BASE_REPO_URL}/FPV_ANT_mount`
     }
 
 ];
