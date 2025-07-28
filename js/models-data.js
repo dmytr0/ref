@@ -49,6 +49,20 @@ const modelsData = [
         ],
         preview: `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Static/media/m4v2_o4_static_2.png`,
         detailsUrl: `${BASE_REPO_URL}/FPV_CAMERA_MOUNT/Static`
+    },
+    {
+        id: 'fpv_power_wire_soldering_helper',
+        title: 'Хелпер пайки силових',
+        tags: ['helper'],
+        category: 'fpv-misc',
+        descriptionFile: 'descriptions/fpv_power_wire_soldering_helper.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/FPV_power_wire_soldering_HELPER/1.jpg`,
+            `${RAW_BASE_REPO_URL}/FPV_power_wire_soldering_HELPER/2.jpg`,
+            `${RAW_BASE_REPO_URL}/FPV_power_wire_soldering_HELPER/3.jpg`,
+        ],
+        preview: `${RAW_BASE_REPO_URL}/FPV_power_wire_soldering_HELPER/1.jpg`,
+        detailsUrl: `${BASE_REPO_URL}/FPV_power_wire_soldering_HELPER`
     }
 
 ];

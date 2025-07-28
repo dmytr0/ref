@@ -8,29 +8,15 @@
 ```javascript
 {
     id: 'id1',
-        title
-:
-    'name1',
-        tags
-:
-    ['tag1', 'tag2'],
-        category
-:
-    'misc',
-        descriptionFile
-:
-    'descriptions/id1.md',
-        images
-:
-    [
+    title: 'name1',
+    tags: ['tag1', 'tag2'],
+    category: 'misc',
+    descriptionFile: 'descriptions/id1.md',
+    images: [
         `${RAW_BASE_REPO_URL}/1.jpg`,
         `${RAW_BASE_REPO_URL}/2.jpg`
     ],
-        preview
-:
-    `${RAW_BASE_REPO_URL}/1.jpg`,
-        detailsUrl
-:
-    `${BASE_REPO_URL}/mount`
+    preview: `${RAW_BASE_REPO_URL}/1.jpg`,
+    detailsUrl: `${BASE_REPO_URL}/mount`
 }
 ```
