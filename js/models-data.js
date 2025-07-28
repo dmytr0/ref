@@ -77,6 +77,20 @@ const modelsData = [
         ],
         preview: `${RAW_BASE_REPO_URL}/FPV_ANT_mount/1.jpg`,
         detailsUrl: `${BASE_REPO_URL}/FPV_ANT_mount`
+    },
+
+    {
+        id: 'ant_arm_mount',
+        title: 'Кріплення антени на промінь',
+        tags: ['antenna', 'mark4v1', 'mark4v2', 'mount', 'arm', 'manta10', 'xl10v6', 'xl10v7'],
+        category: 'fpv-antenna-mounts',
+        descriptionFile: 'descriptions/ant_arm_mount.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/4.jpg`,
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/3.png`,
+        ],
+        preview: `${RAW_BASE_REPO_URL}/FPV_ANT_mount/4.jpg`,
+        detailsUrl: `${BASE_REPO_URL}/FPV_ANT_mount`
     }
 
 ];
