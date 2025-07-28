@@ -5,32 +5,57 @@ const BASE_REPO_URL = 'https://github.com/dmytr0/glory_to_ukraine/tree/master';
 const modelsData = [
     {
         id: 'dji-antenna-mount',
-        title: 'Тримач цифрових антен DJI',
+        title: 'Складний тримач цифрових антен DJI',
         tags: ['manta10', 'mark4v2', 'dji', 'digital'],
         category: 'fpv-antenna-mounts',
-        description: `## Тримач цифрових антен DJI
-
-Друк:
-- Тримач антен x1
-    - [Універсальний](${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/D_ant_mount_ditch_manta10_v0.3.stl) підходить під різні бази.
-- База тримача антен x1
-    - [Manta10](${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/foldable_ant_mount_base_manta10_v0.3.stl)
-    - [Mark4V2](${RAW_BASE_REPO_URL}/FPV_ANT_mount/foldable_ant_mount_base_mark4_v0.3.stl)
-
-Для збірки потрібен гвинт **M3x30** (від стеку)`,
+        descriptionFile: 'descriptions/dji-antenna-mount.md',
         images: [
             `${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/media/1.jpg`,
             `${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/media/2.jpg`
         ],
         preview: `${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/media/2.jpg`,
-        downloadUrl: `${BASE_REPO_URL}/FPV_ANT_mount/`
+        detailsUrl: `${BASE_REPO_URL}/FPV_ANT_mount/`
+    },
+
+
+    {
+        id: 'rx_2.4_foldable_mount',
+        title: 'Складний тримач RX 2.4 антен',
+        tags: ['manta10', 'mark4v2', 'rx', '2.4'],
+        category: 'fpv-antenna-mounts',
+        descriptionFile: 'descriptions/rx_2.4_foldable_mount.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/media/3.jpg`,
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/media/4.jpg`,
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/media/7.png`,
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/media/5.jpg`,
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/media/6.jpg`
+        ],
+        preview: `${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/media/4.jpg`,
+        detailsUrl: `${BASE_REPO_URL}/FPV_ANT_mount`
+    },
+    {
+        id: 'static-camera-mounts',
+        title: 'Статичні кріплення для FPV камер',
+        tags: ['static', 'camera', 'mount', 'dji', 'o3', 'o4', 'vtx', 'mark4v2', 'manta10', 'xl10v6', 'xl10v7', 'apex', 'flyflex', 'pidr', 'cx10', 'waveshare', 'custom'],
+        category: 'fpv-cam-mounts',
+        descriptionFile: 'descriptions/static-camera-mounts.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Static/media/m4v2_o4_static_2.png`,
+            `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Static/media/m4v2_o4_static_1.png`,
+            `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Static/media/1.jpg`,
+            `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Static/media/2.jpg`,
+            `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Static/media/3.jpg`
+        ],
+        preview: `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Static/media/m4v2_o4_static_2.png`,
+        detailsUrl: `${BASE_REPO_URL}/FPV_CAMERA_MOUNT/Static`
     }
-    // Додавайте свої моделі тут
+
 ];
 
 const CATEGORIES = {
     'fpv-antenna-mounts': 'FPV маунти антен',
-    'fpv-gimbals': 'FPV поворотки',
+    'fpv-cam-mounts': 'FPV маунти камер',
     'fpv-misc': 'FPV різне',
     'misc': 'Різне'
 };

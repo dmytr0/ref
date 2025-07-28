@@ -14,7 +14,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 2rem;
 }
 
 /* Header */
@@ -35,9 +35,10 @@ body {
 
 .nav-brand h1 {
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.8rem; /* Збільшуємо розмір */
     font-weight: 700;
     margin-bottom: 0.25rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Додаємо тінь */
 }
 
 .nav-links {
@@ -49,13 +50,17 @@ body {
     color: white;
     text-decoration: none;
     font-weight: 500;
+    font-size: 1.1rem; /* Збільшуємо розмір */
     padding: 0.5rem 1rem;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
+    border-radius: 25px; /* Робимо більш округлими */
+    transition: all 0.3s ease; /* Покращуємо анімацію */
 }
+
 
 .nav-links a:hover {
     background-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px); /* Додаємо підйом при hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Додаємо тінь */
 }
 
 /* Hero Section */
@@ -700,13 +705,27 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 1rem; /* Для мобільних */
+    }
+
     .navbar .container {
         flex-direction: column;
         gap: 1rem;
     }
 
+    .nav-brand h1 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
     .nav-links {
         gap: 1rem;
+    }
+
+    .nav-links a {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
     }
 
     .hero-content h2 {
@@ -806,3 +825,22 @@ footer {
 }
 
 /* Для дуже широких або високих картинок */
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 2rem;
+}
+.social-links a {
+    color: #333;
+    transition: color 0.3s ease;
+}
+.social-links a:hover {
+    color: #007bff;
+}
+
+.some-link {
+    color: white;
+    /*text-decoration: none;*/
+}

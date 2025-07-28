@@ -1,20 +1,85 @@
-// js/main.js - простий і робочий код
+// js/main.js - оновлена версія з URL routing
 class ModelsCatalog {
     constructor() {
         this.filteredModels = [...modelsData];
-        this.selectedTags = []; // Додаємо масив обраних тегів
-        // Додаємо невелику затримку щоб marked точно завантажився
+            this.selectedTags = [];
+        this.loadedDescriptions = {};
         setTimeout(() => {
             this.init();
         }, 100);
     }
 
-    init() {
-        console.log('Marked available:', typeof marked); // Для дебагу
-        this.renderCatalog();
+    async init() {
+        console.log('Marked available:', typeof marked);
+        await this.renderCatalog();
         this.setupFilters();
         this.setupModal();
-        this.updateResultsCount();
+            this.updateResultsCount();
+        this.setupURLRouting(); // Додаємо URL routing
+        this.handleInitialURL(); // Обробляємо початковий URL
+    }
+
+    // Новий метод для налаштування URL routing
+    setupURLRouting() {
+        // Слухаємо зміни в URL (кнопка назад/вперед)
+        window.addEventListener('popstate', (e) => {
+            this.handleURLChange();
+        });
+    }
+
+    // Обробка початкового URL при завантаженні сторінки
+    handleInitialURL() {
+        const hash = window.location.hash;
+        if (hash && hash.startsWith('#')) {
+            const modelId = hash.substring(1);
+        const model = modelsData.find(m => m.id === modelId);
+            if (model) {
+                setTimeout(() => {
+                this.openModal(modelId);
+                }, 500); // Невелика затримка для завершення ініціалізації
+    }
+        }
+    }
+
+    // Обробка зміни URL
+    handleURLChange() {
+        const hash = window.location.hash;
+        if (hash && hash.startsWith('#')) {
+            const modelId = hash.substring(1);
+            const model = modelsData.find(m => m.id === modelId);
+            if (model) {
+                this.openModal(modelId, false); // false = не оновлювати URL повторно
+            }
+        } else {
+            // Якщо хеш порожній, закриваємо модальне вікно
+            this.closeModal(false); // false = не оновлювати URL
+        }
+    }
+
+    async loadDescription(model) {
+        if (this.loadedDescriptions[model.id]) {
+            return this.loadedDescriptions[model.id];
+        }
+
+        if (model.descriptionFile) {
+            try {
+                console.log(`Loading description from: ${model.descriptionFile}`);
+                const response = await fetch(model.descriptionFile);
+                if (response.ok) {
+                    const markdown = await response.text();
+                    this.loadedDescriptions[model.id] = markdown;
+                    return markdown;
+                } else {
+                    console.warn(`Failed to load ${model.descriptionFile}, using fallback`);
+                }
+            } catch (error) {
+                console.error(`Error loading description for ${model.id}:`, error);
+            }
+        }
+
+        const fallback = model.description || `## ${model.title}\n\nОпис недоступний.`;
+        this.loadedDescriptions[model.id] = fallback;
+        return fallback;
     }
 
     parseMarkdown(text) {
@@ -26,76 +91,84 @@ class ModelsCatalog {
         }
 
         try {
-            console.log('Original text for parsing:', text.substring(0, 100));
-
+            let html;
             if (typeof marked.parse === 'function') {
-                return marked.parse(text);
+                html = marked.parse(text);
             } else if (typeof marked === 'function') {
-                return marked(text);
+                html = marked(text);
             } else {
                 console.error('Marked не є функцією!');
                 return text;
             }
+
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = html;
+
+            tempDiv.querySelectorAll('a[href^="http"]').forEach(link => {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            });
+
+            return tempDiv.innerHTML;
         } catch (error) {
             console.error('Помилка парсингу:', error);
             return text;
         }
     }
 
-    getShortDescription(markdown) {
-        console.log('Getting short description for:', markdown.substring(0, 30)); // Для дебагу
-
-        // Спершу парсимо markdown
+    async getShortDescription(model) {
+        const markdown = await this.loadDescription(model);
         const htmlContent = this.parseMarkdown(markdown);
-        console.log('Parsed HTML:', htmlContent.substring(0, 100)); // Для дебагу
 
-        // Створюємо тимчасовий div для витягування тексту
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = htmlContent;
 
-        // Витягуємо текст з перших елементів
         const allText = tempDiv.textContent || tempDiv.innerText || '';
-
-        // Прибираємо заголовки та беремо перші 150 символів
         const lines = allText.split('\n').filter(line => line.trim());
         const description = lines.find(line => !line.startsWith('#') && line.trim()) || lines[0] || 'Опис відсутній';
 
         return description.length > 150 ? description.substring(0, 150) + '...' : description;
     }
 
-    renderModelsGrid(models) {
-        return models.map(model => {
-            const shortDesc = this.getShortDescription(model.description);
-            console.log('Short desc for', model.title, ':', shortDesc); // Для дебагу
+    async renderModelsGrid(models) {
+        const modelCards = [];
 
-            return `
+        for (const model of models) {
+            const shortDesc = await this.getShortDescription(model);
+
+            modelCards.push(`
                 <div class="model-card" data-model-id="${model.id}">
                     <div class="model-image">
-                        ${model.preview ? 
+                        ${model.preview ?
                             `<img src="${model.preview}" alt="${model.title}" onerror="this.style.display='none'">` :
                             '📦'
                         }
-                    </div>
+            </div>
                     <div class="model-info">
                         <h3 class="model-title">${model.title}</h3>
                         <div class="model-tags">
                             ${model.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                        </div>
+                </div>
                         <div class="model-description">${shortDesc}</div>
                     </div>
                 </div>
-            `;
-        }).join('');
+            `);
+        }
+
+        return modelCards.join('');
     }
 
-    openModal(modelId) {
+    // Оновлюємо метод openModal
+    async openModal(modelId, updateURL = true) {
         const model = modelsData.find(m => m.id === modelId);
         if (!model) return;
 
-        console.log('Opening modal for:', model.title); // Для дебагу
-        console.log('Description:', model.description); // Для дебагу
-
         const modal = document.getElementById('model-modal');
+
+        // Оновлюємо URL якщо потрібно
+        if (updateURL) {
+            history.pushState({modelId}, model.title, `#${modelId}`);
+        }
 
         document.getElementById('modal-title').textContent = model.title;
         document.getElementById('modal-category').innerHTML =
@@ -103,19 +176,34 @@ class ModelsCatalog {
         document.getElementById('modal-tags').innerHTML =
             model.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
 
-        // Парсимо markdown
-        const parsedDescription = this.parseMarkdown(model.description);
-        console.log('Parsed description:', parsedDescription); // Для дебагу
+        // Показуємо лоадер поки завантажується опис
+        document.getElementById('modal-description').innerHTML = '<p>Завантаження опису...</p>';
 
+        // Асинхронно завантажуємо та парсимо опис
+        const description = await this.loadDescription(model);
+        const parsedDescription = this.parseMarkdown(description);
         document.getElementById('modal-description').innerHTML = parsedDescription;
 
         this.setupModalGallery(model.images);
-        document.getElementById('modal-download').href = model.downloadUrl;
+        document.getElementById('modal-details').href = model.detailsUrl;
 
         modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Блокуємо скролл body
     }
 
-    renderCatalog() {
+    // Новий метод для закриття модального вікна
+    closeModal(updateURL = true) {
+        const modal = document.getElementById('model-modal');
+        modal.style.display = 'none';
+        document.body.style.overflow = ''; // Відновлюємо скролл body
+
+        // Оновлюємо URL якщо потрібно
+        if (updateURL) {
+            history.pushState({}, document.title, window.location.pathname);
+        }
+    }
+
+    async renderCatalog() {
         const catalogContent = document.getElementById('catalog-content');
 
         if (this.filteredModels.length === 0) {
@@ -130,27 +218,50 @@ class ModelsCatalog {
         }
 
         const groupedModels = this.groupModelsByCategory();
+        const categoryPromises = [];
 
-        catalogContent.innerHTML = Object.entries(CATEGORIES).map(([categoryId, categoryName]) => {
+        for (const [categoryId, categoryName] of Object.entries(CATEGORIES)) {
             const categoryModels = groupedModels[categoryId] || [];
             const categoryIcon = this.getCategoryIcon(categoryId);
 
-            return `
-                <div class="category-section ${categoryModels.length === 0 ? 'empty' : ''}">
-                    <div class="category-header">
-                        <span class="category-icon">${categoryIcon}</span>
-                        <span>${categoryName}</span>
-                        <span class="category-count">(${categoryModels.length})</span>
-                    </div>
-                    <div class="category-models">
-                        ${categoryModels.length > 0 ? 
-                            `<div class="models-grid">${this.renderModelsGrid(categoryModels)}</div>` :
-                            `<div class="empty-category-message">Поки що немає моделей в цій категорії</div>`
-                        }
-                    </div>
+            if (categoryModels.length > 0) {
+                categoryPromises.push(
+                    this.renderModelsGrid(categoryModels).then(modelsGrid => ({
+                        categoryId,
+                        categoryName,
+                        categoryIcon,
+                        modelsGrid,
+                        isEmpty: false
+                    }))
+                    );
+            } else {
+                categoryPromises.push(Promise.resolve({
+                    categoryId,
+                    categoryName,
+                    categoryIcon,
+                    modelsGrid: '',
+                    isEmpty: true
+                }));
+        }
+    }
+
+        const categoryResults = await Promise.all(categoryPromises);
+
+        catalogContent.innerHTML = categoryResults.map(({ categoryId, categoryName, categoryIcon, modelsGrid, isEmpty }) => `
+            <div class="category-section ${isEmpty ? 'empty' : ''}">
+                <div class="category-header">
+                    <span class="category-icon">${categoryIcon}</span>
+                    <span>${categoryName}</span>
+                    <span class="category-count">(${groupedModels[categoryId]?.length || 0})</span>
                 </div>
-            `;
-        }).join('');
+                <div class="category-models">
+                    ${!isEmpty ?
+                        `<div class="models-grid">${modelsGrid}</div>` :
+                        `<div class="empty-category-message">Поки що немає моделей в цій категорії</div>`
+}
+                </div>
+            </div>
+        `).join('');
 
         this.setupModelCardEvents();
     }
@@ -169,7 +280,7 @@ class ModelsCatalog {
     getCategoryIcon(categoryId) {
         const icons = {
             'fpv-antenna-mounts': '📡',
-            'fpv-gimbals': '🎥',
+            'fpv-cam-mounts': '📷',
             'fpv-misc': '🚁',
             'misc': '🔧'
         };
@@ -181,7 +292,7 @@ class ModelsCatalog {
             card.addEventListener('click', () => {
                 const modelId = card.dataset.modelId;
                 this.openModal(modelId);
-            });
+});
         });
     }
 
@@ -191,34 +302,30 @@ class ModelsCatalog {
         const searchFilter = document.getElementById('search-filter');
         const clearButton = document.getElementById('clear-filters');
 
-        // Створюємо dropdown для тегів
         this.setupTagFilter();
 
-        const applyFilters = () => {
+        const applyFilters = async () => {
             const categoryValue = categoryFilter.value;
             const searchValue = searchFilter.value.toLowerCase();
+
             this.filteredModels = modelsData.filter(model => {
                 const categoryMatch = !categoryValue || model.category === categoryValue;
-
-                // Перевіряємо чи модель містить ВСІ обрані теги
                 const tagMatch = this.selectedTags.length === 0 ||
                     this.selectedTags.every(selectedTag => model.tags.includes(selectedTag));
 
                 const searchMatch = !searchValue ||
-                    model.title.toLowerCase().includes(searchValue) ||
-                    model.description.toLowerCase().includes(searchValue);
+                    model.title.toLowerCase().includes(searchValue);
 
                 return categoryMatch && tagMatch && searchMatch;
             });
 
-            this.renderCatalog();
+            await this.renderCatalog();
             this.updateResultsCount();
         };
 
         categoryFilter.addEventListener('change', applyFilters);
         searchFilter.addEventListener('input', applyFilters);
 
-        // Обробник для select тегів
         tagFilter.addEventListener('change', (e) => {
             const selectedTag = e.target.value;
             if (selectedTag && !this.selectedTags.includes(selectedTag)) {
@@ -227,21 +334,20 @@ class ModelsCatalog {
                 this.updateTagFilterOptions();
                 applyFilters();
             }
-            e.target.value = ''; // Скидаємо select
+            e.target.value = '';
         });
 
-        clearButton.addEventListener('click', () => {
+        clearButton.addEventListener('click', async () => {
             categoryFilter.value = '';
             searchFilter.value = '';
             this.selectedTags = [];
             this.updateSelectedTagsDisplay();
             this.updateTagFilterOptions();
             this.filteredModels = [...modelsData];
-            this.renderCatalog();
+            await this.renderCatalog();
             this.updateResultsCount();
         });
 
-        // Зберігаємо посилання на applyFilters для використання в інших методах
         this.applyFilters = applyFilters;
     }
 
@@ -270,9 +376,8 @@ class ModelsCatalog {
                 <span>${tag}</span>
                 <span class="remove-tag" data-tag="${tag}">&times;</span>
             </div>
-            `).join('');
+        `).join('');
 
-        // Додаємо обробники для видалення тегів
         selectedTagsContainer.querySelectorAll('.remove-tag').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const tagToRemove = e.target.dataset.tag;
@@ -300,17 +405,25 @@ class ModelsCatalog {
         countElement.textContent = `Знайдено: ${this.filteredModels.length} моделей`;
     }
 
+    // Оновлюємо setupModal для використання нового методу closeModal
     setupModal() {
         const modal = document.getElementById('model-modal');
         const closeBtn = document.querySelector('.close');
 
         closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
+            this.closeModal();
         });
 
         window.addEventListener('click', (e) => {
             if (e.target === modal) {
-                modal.style.display = 'none';
+                this.closeModal();
+            }
+        });
+
+        // Додаємо обробник для клавіші Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                this.closeModal();
             }
         });
     }
@@ -320,14 +433,11 @@ class ModelsCatalog {
         const thumbnailStrip = document.querySelector('.thumbnail-strip');
 
         if (images && images.length > 0) {
-            // Додаємо обробник завантаження для головної картинки
             mainImage.onload = function() {
-                // Картинка завантажилась успішно
                 console.log('Main image loaded successfully');
             };
 
             mainImage.onerror = function() {
-                // Якщо картинка не завантажилась
                 console.log('Failed to load main image');
                 this.style.display = 'flex';
                 this.innerHTML = '<div style="font-size: 3rem; color: #999;">📷</div>';
