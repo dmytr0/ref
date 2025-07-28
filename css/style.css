@@ -1,0 +1,808 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8fafc;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.navbar {
+    background: linear-gradient(135deg, #0057b7 0%, #ffd700 100%);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand h1 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+/* Catalog Section */
+.catalog-section {
+    padding: 4rem 0;
+    background: white;
+}
+
+.catalog-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #1a202c;
+}
+
+/* Filters */
+.filters {
+    background: #f7fafc;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    align-items: end;
+    }
+
+.filter-group {
+    display: flex;
+        flex-direction: column;
+    gap: 0.5rem;
+    }
+
+.filter-group label {
+    font-weight: 500;
+    color: #2d3748;
+}
+
+.filter-group select,
+.filter-group input {
+    padding: 0.75rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+    outline: none;
+    border-color: #0057b7;
+}
+
+#tag-filter {
+    padding: 0.75rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+    background: white;
+    cursor: pointer;
+}
+
+#tag-filter:focus {
+    outline: none;
+    border-color: #0057b7;
+}
+
+/* css/style.css - додаємо стилі для мультиселект тегів */
+.tag-filter-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.selected-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    min-height: 2rem;
+    padding: 0.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    background: #f8fafc;
+}
+
+.selected-tags:empty::before {
+    content: "Теги не обрано";
+    color: #a0aec0;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.selected-tag {
+    background: #0057b7;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    animation: slideIn 0.2s ease;
+}
+
+.selected-tag .remove-tag {
+    cursor: pointer;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transition: background-color 0.2s ease;
+}
+
+.selected-tag .remove-tag:hover {
+    background: rgba(255,255,255,0.5);
+}
+
+.results-info {
+    margin-bottom: 1.5rem;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+/* Category Sections */
+.category-section {
+    margin-bottom: 3rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    overflow: hidden;
+    animation: slideInUp 0.6s ease forwards;
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+.category-section:nth-child(even) {
+    background: #f8fafc;
+    }
+
+.category-header {
+    background: linear-gradient(135deg, #0057b7 0%, #005bb5 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.category-icon {
+    font-size: 2rem;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.category-models {
+    padding: 2rem;
+}
+
+.category-section.empty {
+    opacity: 0.6;
+}
+
+.category-section.empty .category-header {
+    background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
+}
+
+.empty-category-message {
+    text-align: center;
+    padding: 2rem;
+    color: #718096;
+    font-style: italic;
+}
+
+.category-section:nth-child(1) { animation-delay: 0.1s; }
+.category-section:nth-child(2) { animation-delay: 0.2s; }
+.category-section:nth-child(3) { animation-delay: 0.3s; }
+.category-section:nth-child(4) { animation-delay: 0.4s; }
+
+/* Models Grid */
+.models-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.model-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.model-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.model-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #999;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.model-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.model-info {
+    padding: 1.5rem;
+}
+
+.model-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1a202c;
+}
+
+.model-description {
+    color: #4a5568;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.model-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.tag {
+    background: #e2e8f0;
+    color: #4a5568;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.model-category {
+    background: #0057b7;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0057b7, #005bb5);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #004a9f, #004f9f);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: #e2e8f0;
+    color: #4a5568;
+}
+
+.btn-secondary:hover {
+    background: #cbd5e0;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 2% auto;
+    padding: 0;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 1000px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+    background: rgba(255,255,255,0.8);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close:hover {
+    color: #000;
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.modal-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.main-image {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.main-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 4px;
+}
+
+.thumbnail-strip {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.thumbnail {
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.thumbnail.active {
+    border-color: #0057b7;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-info h2 {
+    color: #1a202c;
+    margin-bottom: 1rem;
+}
+
+.modal-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.modal-category {
+    margin-bottom: 1.5rem;
+}
+
+.modal-description {
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* ВИПРАВЛЕНІ СТИЛІ ДЛЯ MARKDOWN */
+.modal-description h1,
+.modal-description h2,
+.modal-description h3 {
+    color: #1a202c;
+    margin: 1.5rem 0 1rem 0;
+    font-weight: 600;
+}
+
+.modal-description h1 {
+    font-size: 1.8rem;
+}
+
+.modal-description h2 {
+    font-size: 1.5rem;
+}
+
+.modal-description h3 {
+    font-size: 1.2rem;
+}
+
+.modal-description p {
+    margin: 1rem 0;
+    line-height: 1.6;
+}
+
+.modal-description img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+/* СПИСКИ - ОСНОВНІ СТИЛІ */
+.modal-description ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+    list-style-type: disc;
+}
+
+.modal-description ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+    list-style-type: decimal;
+}
+
+.modal-description li {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+/* ВКЛАДЕНІ СПИСКИ */
+.modal-description ul ul {
+    margin: 0.5rem 0;
+    padding-left: 2rem;
+    list-style-type: circle;
+}
+
+.modal-description ol ol {
+    margin: 0.5rem 0;
+    padding-left: 2rem;
+    list-style-type: lower-alpha;
+}
+
+.modal-description ul ul li,
+.modal-description ol ol li {
+    margin: 0.25rem 0;
+}
+
+/* ТРЕТІЙ РІВЕНЬ ВКЛАДЕНОСТІ */
+.modal-description ul ul ul {
+    list-style-type: square;
+}
+
+.modal-description ol ol ol {
+    list-style-type: lower-roman;
+}
+
+/* ПОСИЛАННЯ В СПИСКАХ */
+.modal-description li a {
+    color: #0057b7;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.modal-description li a:hover {
+    color: #003d82;
+    text-decoration: none;
+}
+
+/* STRONG/BOLD ТЕКСТ */
+.modal-description strong,
+.modal-description b {
+    font-weight: 600;
+    color: #1a202c;
+}
+
+/* ITALIC ТЕКСТ */
+.modal-description em,
+.modal-description i {
+    font-style: italic;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+/* About Section */
+.about-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 0;
+}
+
+.about-section h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content p {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+.how-to-add {
+    background: rgba(255,255,255,0.1);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.how-to-add h3 {
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.how-to-add ol {
+    margin-left: 1.5rem;
+    line-height: 1.8;
+}
+
+.how-to-add li {
+    margin-bottom: 0.5rem;
+}
+
+.how-to-add code {
+    background: rgba(0,0,0,0.2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+    background: #1a202c;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #718096;
+    grid-column: 1 / -1;
+}
+
+.empty-state-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #4a5568;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+
+    .filters {
+        grid-template-columns: 1fr;
+    }
+
+    .models-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .modal-body {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+    }
+
+    .category-header {
+        padding: 1rem 1.5rem;
+        font-size: 1.3rem;
+    }
+
+    .category-models {
+        padding: 1.5rem;
+    }
+
+    .model-image {
+        height: 180px;
+    }
+
+    .main-image {
+        height: 300px;
+    }
+
+    /* RESPONSIVE ДЛЯ СПИСКІВ */
+    .modal-description ul,
+    .modal-description ol {
+        padding-left: 1.5rem;
+    }
+
+    .modal-description ul ul,
+    .modal-description ol ol {
+        padding-left: 1.5rem;
+    }
+
+    /* Responsive для тег фільтру */
+    .selected-tags {
+        padding: 0.25rem;
+    }
+
+    .selected-tag {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.model-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Для дуже широких або високих картинок */

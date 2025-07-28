@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glory to Ukraine - 3D Models Catalog</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h1>🇺🇦 Glory to Ukraine</h1>
+        </div>
+        <div class="nav-links">
+            <a href="#catalog">Каталог</a>
+            <a href="#about">Про проєкт</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Колекція 3D моделей для потреб України</h2>
+        </div>
+    </section>
+
+    <section id="catalog" class="catalog-section">
+        <div class="container">
+            <h2>📋 Каталог моделей</h2>
+
+            <!-- Фільтри -->
+            <div class="filters">
+                <div class="filter-group">
+                    <label>Категорія:</label>
+                    <select id="category-filter">
+                        <option value="">Всі категорії</option>
+                        <option value="fpv-antenna-mounts">FPV маунти антен</option>
+                        <option value="fpv-gimbals">FPV поворотки</option>
+                        <option value="fpv-misc">FPV різне</option>
+                        <option value="misc">Різне</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>Пошук по тегах:</label>
+                    <div class="tag-filter-container">
+                        <div class="selected-tags" id="selected-tags">
+                            <!-- Обрані теги будуть тут -->
+                        </div>
+                        <select id="tag-filter">
+                            <option value="">Оберіть тег...</option>
+                            <!-- Опції будуть додані через JavaScript -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label>Пошук по назві:</label>
+                    <input type="text" id="search-filter" placeholder="Пошук моделей...">
+                </div>
+
+                <button id="clear-filters" class="btn btn-secondary">Очистити фільтри</button>
+            </div>
+
+            <!-- Результати -->
+            <div class="results-info">
+                <span id="results-count">Знайдено: 0 моделей</span>
+            </div>
+
+            <!-- Каталог з розділенням по категоріям -->
+            <div id="catalog-content">
+                <!-- Категорії будуть додані через JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+    <div class="container">
+            <h2>Про проєкт</h2>
+            <div class="about-content">
+                <p>Цей проєкт створено для систематизації моїх 3D моделей.</p>
+                <p>Всі моделі можуть бути використані для особистих не комерційних цілей.</p>
+
+                <a href="https://github.com/dmytr0/glory_to_ukraine/" target="_blank" class="btn-primary">Перейти до репозиторію</a>
+    </div>
+        </div>
+    </section>
+</main>
+
+<!-- Модальне вікно для перегляду моделі -->
+<div id="model-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-body">
+            <div class="modal-gallery">
+                <div class="main-image">
+                    <img id="modal-main-image" src="" alt="">
+                </div>
+                <div class="thumbnail-strip">
+                    <!-- Мініатюри будуть додані динамічно -->
+                </div>
+            </div>
+            <div class="modal-info">
+                <h2 id="modal-title"></h2>
+                <div class="modal-tags" id="modal-tags"></div>
+                <div class="modal-category" id="modal-category"></div>
+                <div class="modal-description" id="modal-description"></div>
+                <div class="modal-actions">
+                    <a id="modal-download" class="btn btn-primary" href="#" target="_blank">📥 Завантажити</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Glory to Ukraine. Слава Україні! 🇺🇦</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
+<script src="js/models-data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
