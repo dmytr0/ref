@@ -63,6 +63,20 @@ const modelsData = [
         ],
         preview: `${RAW_BASE_REPO_URL}/FPV_power_wire_soldering_HELPER/1.jpg`,
         detailsUrl: `${BASE_REPO_URL}/FPV_power_wire_soldering_HELPER`
+    },
+
+    {
+        id: 'ant_arm_support',
+        title: 'Підтримка довгих антен (Beta)',
+        tags: ['antenna', 'mark4v1', 'mark4v2'],
+        category: 'fpv-antenna-mounts',
+        descriptionFile: 'descriptions/ant_arm_support.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/1.jpg`,
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/2.jpg`
+        ],
+        preview: `${RAW_BASE_REPO_URL}/FPV_ANT_mount/1.jpg`,
+        detailsUrl: `${BASE_REPO_URL}/FPV_ANT_mount`
     }
 
 ];
