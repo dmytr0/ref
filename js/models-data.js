@@ -198,6 +198,21 @@ const modelsData = [
         ],
         preview: `${RAW_BASE_REPO_URL}/PD_QC_module/5.jpg`,
         detailsUrl: `${BASE_REPO_URL}/PD_QC_module`
+    },
+
+    {
+        id: 'rk6006_xy5008_box',
+        title: 'Компактний корпус для DCDC модулів RK6006/XY5008',
+        tags: ['rk6006', 'xy5008', 'XT60', 'DCDC', 'Box', 'Case'],
+        category: 'misc',
+        descriptionFile: 'descriptions/rk6006_xy5008_box.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/Portable_Lab_PowerSupply/RK6006_XY5008_Box/1.jpg`,
+            `${RAW_BASE_REPO_URL}/Portable_Lab_PowerSupply/RK6006_XY5008_Box/2.jpg`,
+            `${RAW_BASE_REPO_URL}/Portable_Lab_PowerSupply/RK6006_XY5008_Box/3.jpg`
+        ],
+        preview: `${RAW_BASE_REPO_URL}/Portable_Lab_PowerSupply/RK6006_XY5008_Box/1.jpg`,
+        detailsUrl: `${BASE_REPO_URL}/Portable_Lab_PowerSupply/RK6006_XY5008_Box`
     }
 
 
