@@ -151,6 +151,22 @@ const modelsData = [
         ],
         preview: `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3/wide_beta/media/1.png`,
         detailsUrl: `${BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3/wide_beta`
+    },
+
+    {
+        id: 'digital_vtx_stand',
+        title: 'Підставка для цифрових VTX',
+        tags: ['DJI', 'dji', 'o3', 'o4', 'xl10v7', 'manta10', 'mark4v2'],
+        category: 'fpv-misc',
+        descriptionFile: 'descriptions/digital_vtx_stand.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/dji_O3_stand.png`,
+            `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/dji_O4_pro_stand.png`,
+            `/media/xl10V7_vtx_stand.png`,
+            `/media/xl10V7_inv_vtx_stand.png`
+        ],
+        preview: `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/dji_O4_pro_stand.png`,
+        detailsUrl: `${BASE_REPO_URL}/FPV_CAMERA_MOUNT/`
     }
 
 ];
