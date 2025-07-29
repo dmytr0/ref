@@ -181,6 +181,23 @@ const modelsData = [
         ],
         preview: `${RAW_BASE_REPO_URL}/FPV_stack_spacers/3.jpg`,
         detailsUrl: `${BASE_REPO_URL}/FPV_stack_spacers`
+    },
+
+    {
+        id: 'pd_qc_module',
+        title: 'PD/QC модуль від XT60',
+        tags: ['PD', 'QC', 'XT60', 'Charger'],
+        category: 'misc',
+        descriptionFile: 'descriptions/pd_qc_module.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/PD_QC_module/5.jpg`,
+            `/media/pd-qc.png`,
+            `/media/pd-qc-vm.png`,
+            `${RAW_BASE_REPO_URL}/PD_QC_module/3.jpg`,
+            `${RAW_BASE_REPO_URL}/PD_QC_module/7.jpg`,
+        ],
+        preview: `${RAW_BASE_REPO_URL}/PD_QC_module/5.jpg`,
+        detailsUrl: `${BASE_REPO_URL}/PD_QC_module`
     }
 
 
