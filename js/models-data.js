@@ -136,6 +136,21 @@ const modelsData = [
         ],
         preview: `/media/povorotna_v3.png`,
         detailsUrl: `${BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3`
+    },
+
+    {
+        id: 'povorotna-camera-mount-v3-wide',
+        title: 'Поворотна камера V3 широка',
+        tags: ['camera', 'mount', 'servo', 'rotating', 'mark4v2', 'manta10', 'caddx', '640ca', '384ca', 'AC640', 'wide', '28mm', 'thermal'],
+        category: 'fpv-cam-mounts',
+        descriptionFile: 'descriptions/povorotna-camera-mount-v3-wide.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3/wide_beta/media/1.png`,
+            `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3/wide_beta/media/9.png`,
+            `/media/povorotna-camera-mount-v3-wide.png`,
+        ],
+        preview: `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3/wide_beta/media/1.png`,
+        detailsUrl: `${BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3/wide_beta`
     }
 
 ];
