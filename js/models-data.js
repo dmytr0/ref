@@ -106,6 +106,19 @@ const modelsData = [
         ],
         preview: `${RAW_BASE_REPO_URL}/FPV_ANT_mount/5.png`,
         detailsUrl: `${BASE_REPO_URL}/FPV_ANT_mount`
+    },
+
+    {
+        id: 'vtx_ant_mount_1',
+        title: 'Кріплення антени VTX назад (long)',
+        tags: ['antenna', 'mark4v2', 'mount'],
+        category: 'fpv-antenna-mounts',
+        descriptionFile: 'descriptions/vtx_ant_mount_1.md',
+        images: [
+            `/media/vtx_ant_mount_1.png`
+        ],
+        preview: `/media/vtx_ant_mount_1.png`,
+        detailsUrl: `${BASE_REPO_URL}/FPV_ANT_mount`
     }
 
 ];
