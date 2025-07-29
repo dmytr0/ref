@@ -119,6 +119,23 @@ const modelsData = [
         ],
         preview: `/media/vtx_ant_mount_1.png`,
         detailsUrl: `${BASE_REPO_URL}/FPV_ANT_mount`
+    },
+
+    {
+        id: 'povorotna-camera-mount-v3',
+        title: 'Поворотна камера V3',
+        tags: ['camera', 'mount', 'servo', 'rotating', 'mark4v1', 'mark4v2', 'manta10', 'dji', 'o3', 'o4', 'caddx', 'ratel', 'runcam', 'thermo'],
+        category: 'fpv-cam-mounts',
+        descriptionFile: 'descriptions/povorotna-camera-mount-v3.md',
+        images: [
+            '/media/povorotna_v3.png',
+            `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3/media/1.jpg`,
+            `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3/media/4.jpg`,
+            `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3/media/2.jpg`,
+            `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3/media/3.jpg`
+        ],
+        preview: `/media/povorotna_v3.png`,
+        detailsUrl: `${BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3`
     }
 
 ];
