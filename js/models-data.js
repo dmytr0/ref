@@ -167,7 +167,22 @@ const modelsData = [
         ],
         preview: `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/dji_O4_pro_stand.png`,
         detailsUrl: `${BASE_REPO_URL}/FPV_CAMERA_MOUNT/`
+    },
+    {
+        id: 'fpv_stack_spacers',
+        title: 'FPV stack проставки',
+        tags: ['fpv', 'spacer'],
+        category: 'fpv-misc',
+        descriptionFile: 'descriptions/fpv_stack_spacers.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/FPV_stack_spacers/3.jpg`,
+            `${RAW_BASE_REPO_URL}/FPV_stack_spacers/1.jpg`,
+            `${RAW_BASE_REPO_URL}/FPV_stack_spacers/2.jpg`,
+        ],
+        preview: `${RAW_BASE_REPO_URL}/FPV_stack_spacers/3.jpg`,
+        detailsUrl: `${BASE_REPO_URL}/FPV_stack_spacers`
     }
+
 
 ];
 
