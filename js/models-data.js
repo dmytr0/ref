@@ -128,13 +128,13 @@ const modelsData = [
         category: 'fpv-cam-mounts',
         descriptionFile: 'descriptions/povorotna-camera-mount-v3.md',
         images: [
-            '/media/povorotna_v3.png',
+            'media/povorotna_v3.png',
             `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3/media/1.jpg`,
             `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3/media/4.jpg`,
             `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3/media/2.jpg`,
             `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3/media/3.jpg`
         ],
-        preview: `/media/povorotna_v3.png`,
+        preview: 'media/povorotna_v3.png',
         detailsUrl: `${BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3`
     },
 
@@ -147,7 +147,7 @@ const modelsData = [
         images: [
             `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3/wide_beta/media/1.png`,
             `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3/wide_beta/media/9.png`,
-            `/media/povorotna-camera-mount-v3-wide.png`,
+            `media/povorotna-camera-mount-v3-wide.png`,
         ],
         preview: `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3/wide_beta/media/1.png`,
         detailsUrl: `${BASE_REPO_URL}/FPV_CAMERA_MOUNT/Povorotna/V3/wide_beta`
@@ -162,8 +162,8 @@ const modelsData = [
         images: [
             `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/dji_O3_stand.png`,
             `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/dji_O4_pro_stand.png`,
-            `/media/xl10V7_vtx_stand.png`,
-            `/media/xl10V7_inv_vtx_stand.png`
+            `media/xl10V7_vtx_stand.png`,
+            `media/xl10V7_inv_vtx_stand.png`
         ],
         preview: `${RAW_BASE_REPO_URL}/FPV_CAMERA_MOUNT/dji_O4_pro_stand.png`,
         detailsUrl: `${BASE_REPO_URL}/FPV_CAMERA_MOUNT/`
@@ -191,8 +191,8 @@ const modelsData = [
         descriptionFile: 'descriptions/pd_qc_module.md',
         images: [
             `${RAW_BASE_REPO_URL}/PD_QC_module/5.jpg`,
-            `/media/pd-qc.png`,
-            `/media/pd-qc-vm.png`,
+            `media/pd-qc.png`,
+            `media/pd-qc-vm.png`,
             `${RAW_BASE_REPO_URL}/PD_QC_module/3.jpg`,
             `${RAW_BASE_REPO_URL}/PD_QC_module/7.jpg`,
         ],
