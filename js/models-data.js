@@ -115,9 +115,9 @@ const modelsData = [
         category: 'fpv-antenna-mounts',
         descriptionFile: 'descriptions/vtx_ant_mount_1.md',
         images: [
-            `/media/vtx_ant_mount_1.png`
+            `media/vtx_ant_mount_1.png`
         ],
-        preview: `/media/vtx_ant_mount_1.png`,
+        preview: `media/vtx_ant_mount_1.png`,
         detailsUrl: `${BASE_REPO_URL}/FPV_ANT_mount`
     },
 
