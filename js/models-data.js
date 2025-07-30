@@ -203,7 +203,7 @@ const modelsData = [
     {
         id: 'rk6006_xy5008_box',
         title: 'Компактний корпус для DCDC модулів RK6006/XY5008',
-        tags: ['rk6006', 'xy5008', 'XT60', 'DCDC', 'Box', 'Case'],
+        tags: ['rk6006', 'xy5008', 'xy5005', 'XT60', 'DCDC', 'Box', 'Case'],
         category: 'misc',
         descriptionFile: 'descriptions/rk6006_xy5008_box.md',
         images: [
@@ -213,6 +213,25 @@ const modelsData = [
         ],
         preview: `${RAW_BASE_REPO_URL}/Portable_Lab_PowerSupply/RK6006_XY5008_Box/1.jpg`,
         detailsUrl: `${BASE_REPO_URL}/Portable_Lab_PowerSupply/RK6006_XY5008_Box`
+    }
+    ,
+
+    {
+        id: 'portable_lab_power_supply',
+        title: 'Портативний автономний блок живлення на 50V',
+        tags: ['rk6006', 'xy5008', 'xy5005', 'XT60', 'DCDC', 'Box', 'Case'],
+        category: 'misc',
+        descriptionFile: 'descriptions/portable_lab_power_supply.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/Portable_Lab_PowerSupply/MINI_autonomous/2.jpg`,
+            `${RAW_BASE_REPO_URL}/Portable_Lab_PowerSupply/MINI_autonomous/1.jpg`,
+            `${RAW_BASE_REPO_URL}/Portable_Lab_PowerSupply/MINI_autonomous/3.jpg`,
+            `${RAW_BASE_REPO_URL}/Portable_Lab_PowerSupply/MINI_autonomous/4.jpg`,
+            `${RAW_BASE_REPO_URL}/Portable_Lab_PowerSupply/MINI_autonomous/5.jpg`,
+            `${RAW_BASE_REPO_URL}/Portable_Lab_PowerSupply/MINI_autonomous/6.jpg`
+        ],
+        preview: `${RAW_BASE_REPO_URL}/Portable_Lab_PowerSupply/MINI_autonomous/2.jpg`,
+        detailsUrl: `${BASE_REPO_URL}/Portable_Lab_PowerSupply/MINI_autonomous`
     }
 
 
