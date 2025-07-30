@@ -170,7 +170,7 @@ const modelsData = [
     },
     {
         id: 'fpv_stack_spacers',
-        title: 'FPV stack проставки',
+        title: 'FPV проставки для стопки дронів',
         tags: ['fpv', 'spacer'],
         category: 'fpv-misc',
         descriptionFile: 'descriptions/fpv_stack_spacers.md',
@@ -181,6 +181,21 @@ const modelsData = [
         ],
         preview: `${RAW_BASE_REPO_URL}/FPV_stack_spacers/3.jpg`,
         detailsUrl: `${BASE_REPO_URL}/FPV_stack_spacers`
+    },
+
+    {
+        id: 'fpv_stack_adapters',
+        title: 'FPV stack адаптери',
+        tags: ['fpv', 'adapter'],
+        category: 'fpv-misc',
+        descriptionFile: 'descriptions/fpv_stack_adapters.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/stack_mount/media/44_stack_adapter_1.jpg`,
+            `${RAW_BASE_REPO_URL}/stack_mount/media/44_stack_adapter_2.jpg`,
+            `media/30.5_to_35_adapter.png`
+        ],
+        preview: `${RAW_BASE_REPO_URL}/stack_mount/media/44_stack_adapter_1.jpg`,
+        detailsUrl: `${BASE_REPO_URL}/stack_mount`
     },
 
     {
