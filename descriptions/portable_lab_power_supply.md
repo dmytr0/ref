@@ -1,7 +1,8 @@
+Живлення від вбудованих 13S аккумуляторів 21700. 
 
+    ! Напруга на виході буде завжди меньше ніж заряд акумуляторів
 
 Друк:
-
 - [Передня панель](https://github.com/dmytr0/glory_to_ukraine/blob/master/Portable_Lab_PowerSupply/MINI_autonomous/frontPanel.stl) x1
 - [Ліва стінка](https://github.com/dmytr0/glory_to_ukraine/blob/master/Portable_Lab_PowerSupply/MINI_autonomous/L_wall.stl) x1
 - [Права стінка](https://github.com/dmytr0/glory_to_ukraine/blob/master/Portable_Lab_PowerSupply/MINI_autonomous/R_wall.stl) x1
