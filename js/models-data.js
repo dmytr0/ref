@@ -277,7 +277,7 @@ const modelsData = [
             `${RAW_BASE_REPO_URL}/spool_holder_roller/media/5.jpg`,
             `${RAW_BASE_REPO_URL}/spool_holder_roller/media/6.jpg`
         ],
-        preview: `${RAW_BASE_REPO_URL}/spool_holder_roller/media/1.png`,
+        preview: `${RAW_BASE_REPO_URL}/spool_holder_roller/media/2.png`,
         detailsUrl: `${BASE_REPO_URL}/spool_holder_roller`
     }
 
