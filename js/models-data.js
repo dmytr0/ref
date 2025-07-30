@@ -279,6 +279,36 @@ const modelsData = [
         ],
         preview: `${RAW_BASE_REPO_URL}/spool_holder_roller/media/2.png`,
         detailsUrl: `${BASE_REPO_URL}/spool_holder_roller`
+    },
+
+    {
+        id: 'powerbank_x16',
+        title: 'Павербанк 16x21700',
+        tags: ['powerbank'],
+        category: 'misc',
+        descriptionFile: 'descriptions/powerbank_x16.md',
+        images: [
+            'media/powerbank_16.png',
+            `${RAW_BASE_REPO_URL}/powerbanka_16x21700/3.jpg`,
+            `${RAW_BASE_REPO_URL}/powerbanka_16x21700/1.jpg`,
+            `${RAW_BASE_REPO_URL}/powerbanka_16x21700/2.jpg`
+
+        ],
+        preview: `media/powerbank_16.png`,
+        detailsUrl: `${BASE_REPO_URL}/powerbanka_16x21700`
+    },
+
+    {
+        id: 'silica_gel_box',
+        title: 'Бокс для сілікагеля (осушувач)',
+        tags: ['drybox', 'silica-gel'],
+        category: 'misc',
+        descriptionFile: 'descriptions/silica_gel_box.md',
+        images: [
+            'media/silica_gel_box.png'
+        ],
+        preview: `media/silica_gel_box.png`,
+        detailsUrl: `${BASE_REPO_URL}/silicagel_box`
     }
 
 
