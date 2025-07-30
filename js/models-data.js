@@ -213,8 +213,7 @@ const modelsData = [
         ],
         preview: `${RAW_BASE_REPO_URL}/Portable_Lab_PowerSupply/RK6006_XY5008_Box/1.jpg`,
         detailsUrl: `${BASE_REPO_URL}/Portable_Lab_PowerSupply/RK6006_XY5008_Box`
-    }
-    ,
+    },
 
     {
         id: 'portable_lab_power_supply',
@@ -232,6 +231,20 @@ const modelsData = [
         ],
         preview: `${RAW_BASE_REPO_URL}/Portable_Lab_PowerSupply/MINI_autonomous/2.jpg`,
         detailsUrl: `${BASE_REPO_URL}/Portable_Lab_PowerSupply/MINI_autonomous`
+    },
+
+    {
+        id: 'rf_power_meter_mod',
+        title: 'Корпус під RF потужномір з модифікацією',
+        tags: ['powermeter'],
+        category: 'misc',
+        descriptionFile: 'descriptions/rf_power_meter_mod.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/RF_power_meter/1.jpg`,
+            `media/powermeter.png`
+        ],
+        preview: `${RAW_BASE_REPO_URL}/RF_power_meter/1.jpg`,
+        detailsUrl: `${BASE_REPO_URL}/RF_power_meter`
     }
 
 

@@ -2,6 +2,8 @@
 
     ! Напруга на виході буде завжди меньше ніж заряд акумуляторів
 
+_Може бути корисним в польових умовах або під час блекаутів._
+
 Друк:
 - [Передня панель](https://github.com/dmytr0/glory_to_ukraine/blob/master/Portable_Lab_PowerSupply/MINI_autonomous/frontPanel.stl) x1
 - [Ліва стінка](https://github.com/dmytr0/glory_to_ukraine/blob/master/Portable_Lab_PowerSupply/MINI_autonomous/L_wall.stl) x1
