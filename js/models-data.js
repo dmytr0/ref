@@ -260,6 +260,24 @@ const modelsData = [
         ],
         preview: `${RAW_BASE_REPO_URL}/RF_power_meter/1.jpg`,
         detailsUrl: `${BASE_REPO_URL}/RF_power_meter`
+    },
+
+    {
+        id: 'spool_holder_roller',
+        title: 'Роликовий тримач котушки (3кг)',
+        tags: ['spool holder'],
+        category: 'misc',
+        descriptionFile: 'descriptions/spool_holder_roller.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/spool_holder_roller/media/1.png`,
+            `${RAW_BASE_REPO_URL}/spool_holder_roller/media/2.png`,
+            `${RAW_BASE_REPO_URL}/spool_holder_roller/media/3.jpg`,
+            `${RAW_BASE_REPO_URL}/spool_holder_roller/media/4.jpg`,
+            `${RAW_BASE_REPO_URL}/spool_holder_roller/media/5.jpg`,
+            `${RAW_BASE_REPO_URL}/spool_holder_roller/media/6.jpg`
+        ],
+        preview: `${RAW_BASE_REPO_URL}/spool_holder_roller/1.png`,
+        detailsUrl: `${BASE_REPO_URL}/spool_holder_roller`
     }
 
 
