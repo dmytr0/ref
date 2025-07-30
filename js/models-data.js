@@ -271,12 +271,13 @@ const modelsData = [
         images: [
             `${RAW_BASE_REPO_URL}/spool_holder_roller/media/1.png`,
             `${RAW_BASE_REPO_URL}/spool_holder_roller/media/2.png`,
+            `media/spool_holder_roller_x2.png`,
             `${RAW_BASE_REPO_URL}/spool_holder_roller/media/3.jpg`,
             `${RAW_BASE_REPO_URL}/spool_holder_roller/media/4.jpg`,
             `${RAW_BASE_REPO_URL}/spool_holder_roller/media/5.jpg`,
             `${RAW_BASE_REPO_URL}/spool_holder_roller/media/6.jpg`
         ],
-        preview: `${RAW_BASE_REPO_URL}/spool_holder_roller/1.png`,
+        preview: `${RAW_BASE_REPO_URL}/spool_holder_roller/media/1.png`,
         detailsUrl: `${BASE_REPO_URL}/spool_holder_roller`
     }
 
