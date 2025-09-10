@@ -25,6 +25,7 @@ const modelsData = [
         category: 'fpv-antenna-mounts',
         descriptionFile: 'descriptions/rx_2.4_foldable_mount.md',
         images: [
+            `media/rx_2.4_v1.0.jpg`,
             `${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/media/3.jpg`,
             `${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/media/4.jpg`,
             `${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/media/7.png`,

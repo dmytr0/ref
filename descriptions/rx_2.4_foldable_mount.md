@@ -1,8 +1,16 @@
+* Версія V1.0 - складається трошки вбік щоб антена не впиралась в верхню кришку рами
+* Версія V0.3 - складається рівно
 
     Антени на інші частоти не тестовані. 
     Також довші антени можуть заважати складати кріплення.
 
-### Друк:
+### Друк v1.0:
+- Тримач антен x1
+  - [Універсальний](https://raw.githubusercontent.com/dmytr0/glory_to_ukraine/refs/heads/master/FPV_ANT_mount/manta10/v1.0/rx_ant_mount_manta_10_v1.0.stl) підходить під різні бази.
+- База тримача антен x1
+  - [Manta10](https://raw.githubusercontent.com/dmytr0/glory_to_ukraine/refs/heads/master/FPV_ANT_mount/manta10/v1.0/foldable_ant_mount_base_manta10_v1.0.stl) універсальна на верх.
+
+### Друк v0.3:
 - Тримач антен x1
     - [Універсальний](https://raw.githubusercontent.com/dmytr0/glory_to_ukraine/refs/heads/master/FPV_ANT_mount/manta10/v0.3/rx_ant_mount_manta_10_v0.3.stl) підходить під різні бази.
 - База тримача антен x1
