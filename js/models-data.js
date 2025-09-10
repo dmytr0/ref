@@ -199,6 +199,21 @@ const modelsData = [
     },
 
     {
+        id: 'solder_stand',
+        title: 'Підставка для припою',
+        tags: ['Solder'],
+        category: 'misc',
+        descriptionFile: 'descriptions/solder_stand.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/For_soldering/Solder_stand/media/12.jpg`,
+            `${RAW_BASE_REPO_URL}/For_soldering/Solder_stand/media/anim1.gif`,
+            `media/solder_stand.png`,
+        ],
+        preview: `${RAW_BASE_REPO_URL}/For_soldering/Solder_stand/media/12.jpg`,
+        detailsUrl: `${BASE_REPO_URL}/For_soldering/Solder_stand`
+    },
+
+    {
         id: 'pd_qc_module',
         title: 'PD/QC модуль від XT60',
         tags: ['PD', 'QC', 'XT60', 'Charger'],
