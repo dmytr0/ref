@@ -4,6 +4,23 @@ const BASE_REPO_URL = 'https://github.com/dmytr0/glory_to_ukraine/tree/master';
 
 const modelsData = [
     {
+        id: 'peakfpv-antenna-mount',
+        title: 'Rріплення VTX Peakfpv THOR T35/T67 ',
+        tags: ['manta10', 'mark4v2', 'xl10v7', 'vtx'],
+        category: 'fpv-antenna-mounts',
+        descriptionFile: 'descriptions/thor-antenna-mount.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/THOR_vtx_mount/media/1.png`,
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/THOR_vtx_mount/media/2.jpg`,
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/THOR_vtx_mount/media/3.jpg`,
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/THOR_vtx_mount/media/4.jpg`,
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/THOR_vtx_mount/media/5.jpg`,
+        ],
+        preview: `${RAW_BASE_REPO_URL}/FPV_ANT_mount/THOR_vtx_mount/media/1.png`,
+        detailsUrl: `${BASE_REPO_URL}/FPV_ANT_mount/THOR_vtx_mount`
+    },
+
+    {
         id: 'dji-antenna-mount',
         title: 'Складний тримач цифрових антен DJI',
         tags: ['manta10', 'mark4v2', 'dji', 'digital'],
