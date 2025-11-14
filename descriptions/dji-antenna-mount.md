@@ -2,6 +2,8 @@
 
     Можливо підійде під walksnail, але не тестовано.
 
+Також можливо встановлення на manta10 сзаду-вниз (див. фото)
+
 ### Друк:
 - Тримач антен x1
     - [Універсальний](https://raw.githubusercontent.com/dmytr0/glory_to_ukraine/refs/heads/master/FPV_ANT_mount/manta10/v0.3/D_ant_mount_ditch_manta10_v0.3.stl) підходить під різні бази.

@@ -28,7 +28,8 @@ const modelsData = [
         descriptionFile: 'descriptions/dji-antenna-mount.md',
         images: [
             `${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/media/1.jpg`,
-            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/media/2.jpg`
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/media/2.jpg`,
+            `${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/media/manta10_rear_bottom.jpg`
         ],
         preview: `${RAW_BASE_REPO_URL}/FPV_ANT_mount/manta10/v0.3/media/2.jpg`,
         detailsUrl: `${BASE_REPO_URL}/FPV_ANT_mount/`
