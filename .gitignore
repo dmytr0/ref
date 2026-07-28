@@ -8,7 +8,7 @@ _site/
 .jekyll-metadata
 .idea
 .DS_Store
-
+deploy.sh
 # Additional Ruby/bundler ignore for when you run: bundle install
 /vendor
 
