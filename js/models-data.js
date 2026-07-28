@@ -218,6 +218,23 @@ const modelsData = [
     },
 
     {
+        id: 'smoke_extractor',
+        title: 'Витяжка диму від пайки',
+        tags: ['Solder', 'smoke', 'extractor', 'esp32c3', 'fan'],
+        category: 'misc',
+        descriptionFile: 'descriptions/smoke_extractor.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/SmokeExtractor/media/1.jpg`,
+            `${RAW_BASE_REPO_URL}/SmokeExtractor/media/2.png`,
+            `${RAW_BASE_REPO_URL}/SmokeExtractor/media/3.png`,
+            `${RAW_BASE_REPO_URL}/SmokeExtractor/media/4.png`,
+            `${RAW_BASE_REPO_URL}/SmokeExtractor/media/5.png`
+        ],
+        preview: `${RAW_BASE_REPO_URL}/SmokeExtractor/media/1.jpg`,
+        detailsUrl: `${BASE_REPO_URL}/SmokeExtractor`
+    },
+
+    {
         id: 'solder_stand',
         title: 'Підставка для припою',
         tags: ['Solder'],
