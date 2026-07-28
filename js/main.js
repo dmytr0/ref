@@ -64,7 +64,7 @@ class ModelsCatalog {
         if (model.descriptionFile) {
             try {
                 console.log(`Loading description from: ${model.descriptionFile}`);
-                const response = await fetch(model.descriptionFile);
+                const response = await fetch(`${model.descriptionFile}?v=${window.BUILD_VERSION || 'dev'}`);
                 if (response.ok) {
                     const markdown = await response.text();
                     this.loadedDescriptions[model.id] = markdown;
