@@ -16,9 +16,11 @@
 
 ## Потрібне кріплення під іншу раму або камеру?
 
-[Виміряйте відстань між центрами стійок](https://dmytr0.github.io/hole-distance/) і висоту стійок вашої рами.
+- Виміряйте __[відстань між центрами стійок](https://hole-distance.dimonick.win/)__ і висоту стійок вашої рами.
+- Використовуйте __[цю тулзу для](https://paramodels-3d.dimonick.win/models/fpv-static-camera-mount)__ побудови моделі за своїми параметрами
 
-**Контакт для запитів**: 
+---
+**Контакт для запитів**:
 
 <a href="https://t.me/dimonick" target="_blank">
 <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram Link"/>
