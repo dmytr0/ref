@@ -11,20 +11,47 @@ class ModelsCatalog {
 
     async init() {
         console.log('Marked available:', typeof marked);
-        await this.renderCatalog();
         this.setupFilters();
+        this.restoreFiltersFromURL();
+        await this.applyFilters({ updateURL: false });
         this.setupModal();
-            this.updateResultsCount();
-        this.setupURLRouting(); // Додаємо URL routing
-        this.handleInitialURL(); // Обробляємо початковий URL
+        this.setupURLRouting();
+        this.handleInitialURL();
     }
 
-    // Новий метод для налаштування URL routing
     setupURLRouting() {
-        // Слухаємо зміни в URL (кнопка назад/вперед)
-        window.addEventListener('popstate', (e) => {
+        window.addEventListener('popstate', async () => {
+            this.restoreFiltersFromURL();
+            await this.applyFilters({ updateURL: false });
             this.handleURLChange();
         });
+    }
+
+    restoreFiltersFromURL() {
+        const url = new URL(window.location.href);
+        const categoryFilter = document.getElementById('category-filter');
+        const searchFilter = document.getElementById('search-filter');
+        const allowedTags = new Set(modelsData.flatMap(model => model.tags));
+        const category = url.searchParams.get('category') || '';
+
+        categoryFilter.value = Object.prototype.hasOwnProperty.call(CATEGORIES, category) ? category : '';
+        searchFilter.value = url.searchParams.get('search') || '';
+        this.selectedTags = [...new Set(url.searchParams.getAll('tag'))].filter(tag => allowedTags.has(tag));
+        this.updateSelectedTagsDisplay();
+        this.updateTagFilterOptions();
+    }
+
+    updateFilterURL() {
+        const category = document.getElementById('category-filter').value;
+        const search = document.getElementById('search-filter').value.trim();
+        const url = new URL(window.location.href);
+        url.searchParams.delete('category');
+        url.searchParams.delete('search');
+        url.searchParams.delete('tag');
+        if (category) url.searchParams.set('category', category);
+        if (search) url.searchParams.set('search', search);
+        this.selectedTags.forEach(tag => url.searchParams.append('tag', tag));
+        history.replaceState(history.state, document.title, `${url.pathname}${url.search}${url.hash}`);
     }
 
     // Обробка початкового URL при завантаженні сторінки
@@ -35,7 +62,7 @@ class ModelsCatalog {
         const model = modelsData.find(m => m.id === modelId);
             if (model) {
                 setTimeout(() => {
-                this.openModal(modelId);
+                this.openModal(modelId, false);
                 }, 500); // Невелика затримка для завершення ініціалізації
     }
         }
@@ -167,7 +194,9 @@ class ModelsCatalog {
 
         // Оновлюємо URL якщо потрібно
         if (updateURL) {
-            history.pushState({modelId}, model.title, `#${modelId}`);
+            const url = new URL(window.location.href);
+            url.hash = modelId;
+            history.pushState({modelId}, model.title, `${url.pathname}${url.search}${url.hash}`);
         }
 
         document.getElementById('modal-title').textContent = model.title;
@@ -186,6 +215,7 @@ class ModelsCatalog {
 
         this.setupModalGallery(model.images);
         document.getElementById('modal-details').href = model.detailsUrl;
+        document.getElementById('modal-details').textContent = model.detailsLabel || '📥 Відкрити в GitHub';
 
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden'; // Блокуємо скролл body
@@ -199,7 +229,9 @@ class ModelsCatalog {
 
         // Оновлюємо URL якщо потрібно
         if (updateURL) {
-            history.pushState({}, document.title, window.location.pathname);
+            const url = new URL(window.location.href);
+            url.hash = '';
+            history.pushState({}, document.title, `${url.pathname}${url.search}`);
         }
     }
 
@@ -279,6 +311,7 @@ class ModelsCatalog {
 
     getCategoryIcon(categoryId) {
         const icons = {
+            'antennas': '📡',
             'fpv-antenna-mounts': '📡',
             'fpv-cam-mounts': '📷',
             'fpv-misc': '🚁',
@@ -299,12 +332,15 @@ class ModelsCatalog {
     setupFilters() {
         const categoryFilter = document.getElementById('category-filter');
         const tagFilter = document.getElementById('tag-filter');
+        const tagFilterToggle = document.getElementById('tag-filter-toggle');
+        const tagFilterPanel = document.getElementById('tag-filter-panel');
+        const tagSearch = document.getElementById('tag-search');
         const searchFilter = document.getElementById('search-filter');
         const clearButton = document.getElementById('clear-filters');
 
         this.setupTagFilter();
 
-        const applyFilters = async () => {
+        const applyFilters = async ({ updateURL = true } = {}) => {
             const categoryValue = categoryFilter.value;
             const searchValue = searchFilter.value.toLowerCase();
 
@@ -321,20 +357,23 @@ class ModelsCatalog {
 
             await this.renderCatalog();
             this.updateResultsCount();
+            if (updateURL) this.updateFilterURL();
         };
 
         categoryFilter.addEventListener('change', applyFilters);
         searchFilter.addEventListener('input', applyFilters);
-
-        tagFilter.addEventListener('change', (e) => {
-            const selectedTag = e.target.value;
-            if (selectedTag && !this.selectedTags.includes(selectedTag)) {
-                this.selectedTags.push(selectedTag);
-                this.updateSelectedTagsDisplay();
-                this.updateTagFilterOptions();
-                applyFilters();
+        tagSearch.addEventListener('input', () => this.updateTagFilterOptions());
+        tagFilterToggle.addEventListener('click', () => {
+            const isOpen = !tagFilterPanel.hidden;
+            tagFilterPanel.hidden = isOpen;
+            tagFilterToggle.setAttribute('aria-expanded', String(!isOpen));
+            if (!isOpen) tagSearch.focus();
+        });
+        document.addEventListener('click', (event) => {
+            if (!tagFilter.contains(event.target)) {
+                tagFilterPanel.hidden = true;
+                tagFilterToggle.setAttribute('aria-expanded', 'false');
             }
-            e.target.value = '';
         });
 
         clearButton.addEventListener('click', async () => {
@@ -343,24 +382,15 @@ class ModelsCatalog {
             this.selectedTags = [];
             this.updateSelectedTagsDisplay();
             this.updateTagFilterOptions();
-            this.filteredModels = [...modelsData];
-            await this.renderCatalog();
-            this.updateResultsCount();
+            await applyFilters();
         });
 
         this.applyFilters = applyFilters;
     }
 
     setupTagFilter() {
-        const allTags = [...new Set(modelsData.flatMap(model => model.tags))].sort();
-
-        const tagSelect = document.getElementById('tag-filter');
-        tagSelect.innerHTML = `
-            <option value="">Оберіть тег...</option>
-            ${allTags.map(tag => `<option value="${tag}">${tag}</option>`).join('')}
-        `;
-
         this.updateSelectedTagsDisplay();
+        this.updateTagFilterOptions();
     }
 
     updateSelectedTagsDisplay() {
@@ -391,13 +421,28 @@ class ModelsCatalog {
 
     updateTagFilterOptions() {
         const allTags = [...new Set(modelsData.flatMap(model => model.tags))].sort();
-        const availableTags = allTags.filter(tag => !this.selectedTags.includes(tag));
+        const query = document.getElementById('tag-search').value.trim().toLocaleLowerCase('uk');
+        const availableTags = allTags.filter(tag =>
+            !this.selectedTags.includes(tag) && (!query || tag.toLocaleLowerCase('uk').includes(query))
+        );
 
-        const tagSelect = document.getElementById('tag-filter');
-        tagSelect.innerHTML = `
-            <option value="">Оберіть тег...</option>
-            ${availableTags.map(tag => `<option value="${tag}">${tag}</option>`).join('')}
-        `;
+        const options = document.getElementById('tag-filter-options');
+        options.innerHTML = availableTags.length
+            ? availableTags.map(tag => `<button type="button" class="tag-combobox-option" role="option" data-tag="${tag}">${tag}</button>`).join('')
+            : '<p class="tag-combobox-empty">Тегів не знайдено</p>';
+        options.querySelectorAll('.tag-combobox-option').forEach(option => {
+            option.addEventListener('click', async () => {
+                const selectedTag = option.dataset.tag;
+                if (!selectedTag || this.selectedTags.includes(selectedTag)) return;
+                this.selectedTags.push(selectedTag);
+                document.getElementById('tag-search').value = '';
+                this.updateSelectedTagsDisplay();
+                this.updateTagFilterOptions();
+                document.getElementById('tag-filter-panel').hidden = true;
+                document.getElementById('tag-filter-toggle').setAttribute('aria-expanded', 'false');
+                await this.applyFilters();
+            });
+        });
     }
 
     updateResultsCount() {

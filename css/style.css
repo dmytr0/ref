@@ -129,26 +129,88 @@ body {
     border-color: #0057b7;
 }
 
-#tag-filter {
-    padding: 0.75rem;
-    border: 1px solid #cbd5e0;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    transition: border-color 0.3s ease;
-    background: white;
-    cursor: pointer;
-}
-
-#tag-filter:focus {
-    outline: none;
-    border-color: #0057b7;
-}
-
 /* css/style.css - додаємо стилі для мультиселект тегів */
 .tag-filter-container {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+}
+
+.tag-combobox {
+    position: relative;
+}
+
+.tag-combobox-toggle,
+.tag-combobox-option {
+    font: inherit;
+}
+
+.tag-combobox-toggle {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    background: white;
+    color: #2d3748;
+    cursor: pointer;
+    text-align: left;
+}
+
+.tag-combobox-toggle::after {
+    content: '⌄';
+    float: right;
+}
+
+.tag-combobox-toggle:focus {
+    outline: none;
+    border-color: #0057b7;
+}
+
+.tag-combobox-panel {
+    position: absolute;
+    z-index: 10;
+    top: calc(100% + 0.25rem);
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    background: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.tag-combobox-panel input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.tag-combobox-options {
+    max-height: 12rem;
+    margin-top: 0.5rem;
+    overflow-y: auto;
+}
+
+.tag-combobox-option {
+    display: block;
+    width: 100%;
+    padding: 0.55rem 0.65rem;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: #2d3748;
+    cursor: pointer;
+    text-align: left;
+}
+
+.tag-combobox-option:hover,
+.tag-combobox-option:focus {
+    background: #ebf8ff;
+    outline: none;
+}
+
+.tag-combobox-empty {
+    margin: 0.5rem;
+    color: #718096;
 }
 
 .selected-tags {

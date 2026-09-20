@@ -4,6 +4,96 @@ const BASE_REPO_URL = 'https://github.com/dmytr0/glory_to_ukraine/tree/master';
 
 const modelsData = [
     {
+        id: 'yagi-adjustable',
+        title: 'Ягі — стенд для налаштування',
+        tags: ['yagi', 'antenna', 'vna', 'adjustable', 'radio'],
+        category: 'antennas',
+        descriptionFile: 'descriptions/yagi-adjustable.md',
+        images: [
+            `${RAW_BASE_REPO_URL}/Yagi_adjustable/media/1.png`,
+            `${RAW_BASE_REPO_URL}/Yagi_adjustable/media/anim.gif`
+        ],
+        preview: `${RAW_BASE_REPO_URL}/Yagi_adjustable/media/1.png`,
+        detailsUrl: `${BASE_REPO_URL}/Yagi_adjustable`
+    },
+    {
+        id: 'paramodels-yagi-antenna',
+        title: 'Антена Ягі (Alfa version)',
+        tags: ['yagi', 'antenna', 'petg', 'vna', 'parametric'],
+        category: 'antennas',
+        descriptionFile: 'descriptions/paramodels-yagi-antenna.md',
+        images: ['https://paramodels-3d.dimonick.win/model-previews/yagi-antenna.png'],
+        preview: 'https://paramodels-3d.dimonick.win/model-previews/yagi-antenna.png',
+        detailsUrl: 'https://paramodels-3d.dimonick.win/models/yagi-antenna/',
+        detailsLabel: '⚙️ Відкрити конфігуратор'
+    },
+    {
+        id: 'paramodels-fpv-static-camera-mount',
+        title: 'Статичне кріплення FPV-камери',
+        tags: ['fpv', 'camera', 'mount', 'parametric'],
+        category: 'fpv-cam-mounts',
+        descriptionFile: 'descriptions/paramodels-fpv-static-camera-mount.md',
+        images: ['https://paramodels-3d.dimonick.win/model-previews/fpv-static-camera-mount.png'],
+        preview: 'https://paramodels-3d.dimonick.win/model-previews/fpv-static-camera-mount.png',
+        detailsUrl: 'https://paramodels-3d.dimonick.win/models/fpv-static-camera-mount/',
+        detailsLabel: '⚙️ Відкрити конфігуратор'
+    },
+    {
+        id: 'paramodels-fpv-rx-mount',
+        title: 'Універсальний тримач RX',
+        tags: ['fpv', 'rx', 'antenna', 'mount', 'parametric'],
+        category: 'fpv-antenna-mounts',
+        descriptionFile: 'descriptions/paramodels-fpv-rx-mount.md',
+        images: ['https://paramodels-3d.dimonick.win/model-previews/fpv-rx-mount.png'],
+        preview: 'https://paramodels-3d.dimonick.win/model-previews/fpv-rx-mount.png',
+        detailsUrl: 'https://paramodels-3d.dimonick.win/models/fpv-rx-mount/',
+        detailsLabel: '⚙️ Відкрити конфігуратор'
+    },
+    {
+        id: 'paramodels-fpv-rx-vtx-universal-mount',
+        title: 'Універсальне кріплення RX / VTX',
+        tags: ['fpv', 'rx', 'vtx', 'antenna', 'mount', 'parametric'],
+        category: 'fpv-antenna-mounts',
+        descriptionFile: 'descriptions/paramodels-fpv-rx-vtx-universal-mount.md',
+        images: ['https://paramodels-3d.dimonick.win/model-previews/fpv-rx-vtx-universal-mount.png'],
+        preview: 'https://paramodels-3d.dimonick.win/model-previews/fpv-rx-vtx-universal-mount.png',
+        detailsUrl: 'https://paramodels-3d.dimonick.win/models/fpv-rx-vtx-universal-mount/',
+        detailsLabel: '⚙️ Відкрити конфігуратор'
+    },
+    {
+        id: 'paramodels-fpv-vtx-antenna-mount',
+        title: 'Тримач VTX-антени',
+        tags: ['fpv', 'vtx', 'antenna', 'mount', 'parametric'],
+        category: 'fpv-antenna-mounts',
+        descriptionFile: 'descriptions/paramodels-fpv-vtx-antenna-mount.md',
+        images: ['https://paramodels-3d.dimonick.win/model-previews/fpv-vtx-antenna-mount.png'],
+        preview: 'https://paramodels-3d.dimonick.win/model-previews/fpv-vtx-antenna-mount.png',
+        detailsUrl: 'https://paramodels-3d.dimonick.win/models/fpv-vtx-antenna-mount/',
+        detailsLabel: '⚙️ Відкрити конфігуратор'
+    },
+    {
+        id: 'paramodels-fpv-vtx-antenna-mount-digital',
+        title: 'Тримач VTX-антени Digital',
+        tags: ['fpv', 'vtx', 'antenna', 'digital', 'parametric'],
+        category: 'fpv-antenna-mounts',
+        descriptionFile: 'descriptions/paramodels-fpv-vtx-antenna-mount-digital.md',
+        images: ['https://paramodels-3d.dimonick.win/model-previews/fpv-vtx-antenna-mount-digital.png'],
+        preview: 'https://paramodels-3d.dimonick.win/model-previews/fpv-vtx-antenna-mount-digital.png',
+        detailsUrl: 'https://paramodels-3d.dimonick.win/models/fpv-vtx-antenna-mount-digital/',
+        detailsLabel: '⚙️ Відкрити конфігуратор'
+    },
+    {
+        id: 'paramodels-fpv-leg',
+        title: 'FPV нога',
+        tags: ['fpv', 'leg', 'support', 'zip-tie', 'parametric'],
+        category: 'fpv-misc',
+        descriptionFile: 'descriptions/paramodels-fpv-leg.md',
+        images: ['https://paramodels-3d.dimonick.win/model-previews/fpv-leg.png'],
+        preview: 'https://paramodels-3d.dimonick.win/model-previews/fpv-leg.png',
+        detailsUrl: 'https://paramodels-3d.dimonick.win/models/fpv-leg/',
+        detailsLabel: '⚙️ Відкрити конфігуратор'
+    },
+    {
         id: 'peakfpv-antenna-mount',
         title: 'Rріплення VTX Peakfpv THOR T35/T67 ',
         tags: ['manta10', 'mark4v2', 'xl10v7', 'vtx'],
@@ -366,6 +456,7 @@ const modelsData = [
 ];
 
 const CATEGORIES = {
+    'antennas': 'Антени',
     'fpv-antenna-mounts': 'FPV маунти антен',
     'fpv-cam-mounts': 'FPV маунти камер',
     'fpv-misc': 'FPV різне',

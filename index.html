@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Glory to Ukraine - 3D Models Catalog</title>
     <link rel="icon" type="image/x-icon" href="media/favicon.ico">
-    <link rel="stylesheet" href="css/style.css?v=4673bb6b">
+    <link rel="stylesheet" href="css/style.css?v=tag-dropdown-20260920">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script defer src="https://stats.dimonick.win/script.js" data-website-id="3a464b13-b834-4186-8fcc-e4ecfa6276e2"></script>
@@ -43,6 +43,7 @@
                     <label>Категорія:</label>
                     <select id="category-filter">
                         <option value="">Всі категорії</option>
+                        <option value="antennas">Антени</option>
                         <option value="fpv-antenna-mounts">FPV маунти антен</option>
                         <option value="fpv-cam-mounts">FPV маунти камер</option>
                         <option value="fpv-misc">FPV різне</option>
@@ -52,14 +53,19 @@
 
                 <div class="filter-group">
                     <label>Пошук по тегах:</label>
-                    <div class="tag-filter-container">
-                        <div class="selected-tags" id="selected-tags">
-                            <!-- Обрані теги будуть тут -->
-                        </div>
-                        <select id="tag-filter">
-                            <option value="">Оберіть тег...</option>
-                            <!-- Опції будуть додані через JavaScript -->
-                        </select>
+                        <div class="tag-filter-container">
+                            <div class="selected-tags" id="selected-tags">
+                                <!-- Обрані теги будуть тут -->
+                            </div>
+                            <div class="tag-combobox" id="tag-filter">
+                                <button type="button" class="tag-combobox-toggle" id="tag-filter-toggle" aria-expanded="false" aria-controls="tag-filter-panel">
+                                    Оберіть тег...
+                                </button>
+                                <div class="tag-combobox-panel" id="tag-filter-panel" hidden>
+                                    <input type="search" id="tag-search" placeholder="Фільтрувати теги..." autocomplete="off">
+                                    <div class="tag-combobox-options" id="tag-filter-options" role="listbox" aria-label="Доступні теги"></div>
+                                </div>
+                            </div>
                     </div>
                 </div>
 
@@ -137,8 +143,8 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
-<script>window.BUILD_VERSION = '4673bb6b';</script>
-<script src="js/models-data.js?v=4673bb6b"></script>
-<script src="js/main.js?v=4673bb6b"></script>
+<script>window.BUILD_VERSION = 'tag-dropdown-20260920';</script>
+<script src="js/models-data.js?v=tag-dropdown-20260920"></script>
+<script src="js/main.js?v=tag-dropdown-20260920"></script>
 </body>
 </html>
