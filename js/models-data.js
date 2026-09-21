@@ -55,7 +55,10 @@ const modelsData = [
         tags: ['fpv', 'rx', 'vtx', 'antenna', 'mount', 'parametric'],
         category: 'fpv-antenna-mounts',
         descriptionFile: 'descriptions/paramodels-fpv-rx-vtx-universal-mount.md',
-        images: ['https://paramodels-3d.dimonick.win/model-previews/fpv-rx-vtx-universal-mount.png'],
+        images: [
+            'https://paramodels-3d.dimonick.win/model-previews/fpv-rx-vtx-universal-mount.png',
+            'media/paramodels-rx-vtx-digital.png'
+        ],
         preview: 'https://paramodels-3d.dimonick.win/model-previews/fpv-rx-vtx-universal-mount.png',
         detailsUrl: 'https://paramodels-3d.dimonick.win/models/fpv-rx-vtx-universal-mount/',
         detailsLabel: '⚙️ Відкрити конфігуратор'
