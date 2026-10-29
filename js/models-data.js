@@ -39,6 +39,31 @@ const modelsData = [
         detailsLabel: '⚙️ Відкрити конфігуратор'
     },
     {
+        id: 'paramodels-fpv-battery-holder',
+        title: 'Тримач великої батареї FPV',
+        tags: ['fpv', 'battery', 'accumulator', 'holder', 'platform', 'parametric'],
+        category: 'fpv-misc',
+        descriptionFile: 'descriptions/paramodels-fpv-battery-holder.md',
+        description: `## Тримач великої батареї FPV
+
+Параметрична площадка для великої FPV-батареї з чотирма кутовими бортиками та фіксацією стрепами. Монтажні отвори налаштовуються під раму дрона.
+
+### Налаштування моделі
+
+- Два варіанти конструкції: окремі вуха під стрепи (V1) або прорізи в кутиках (V2).
+- Внутрішня довжина та ширина площадки, товщина дна й стінок.
+- Відстані між монтажними отворами, їхній діаметр, поздовжній зсув і фаски.
+- Готові розрахункові конфігурації батарей на елементах 21700.
+
+Перед друком виміряйте батарею разом з ізоляцією та додайте потрібний зазор. Розміри пресетів розрахункові й не перевірялися на реальних батареях. Перевірте сумісність монтажних отворів із рамою.
+
+[Відкрити конфігуратор](https://paramodels-3d.dimonick.win/models/fpv-battery-holder/)`,
+        images: ['https://paramodels-3d.dimonick.win/model-previews/fpv-battery-holder.png'],
+        preview: 'https://paramodels-3d.dimonick.win/model-previews/fpv-battery-holder.png',
+        detailsUrl: 'https://paramodels-3d.dimonick.win/models/fpv-battery-holder/',
+        detailsLabel: '⚙️ Відкрити конфігуратор'
+    },
+    {
         id: 'paramodels-fpv-rx-mount',
         title: 'Універсальний тримач RX',
         tags: ['fpv', 'rx', 'antenna', 'mount', 'parametric'],
