@@ -1,4 +1,18 @@
-Адаптери під нестандартні кріплення стеків.
+## FPV stack адаптери
 
-- [30.5mm stack -> 44mm кріплення](https://github.com/dmytr0/glory_to_ukraine/blob/master/stack_mount/44_to_30.5_stack_adapter.stl)
-- [30.5mm stack -> 35mm кріплення](https://github.com/dmytr0/glory_to_ukraine/blob/master/stack_mount/30.5_to_35_adapter.stl)
+Друковані адаптери для встановлення електронного стека з міжцентровою відстанню кріплення **30,5 мм** на раму з іншим розташуванням монтажних отворів.
+
+### Доступні варіанти
+
+- **30,5 → 44 мм** — адаптер між кріпленням стека 30,5 мм і монтажними точками 44 мм.
+- **30,5 → 35 мм** — адаптер між кріпленням стека 30,5 мм і монтажними точками 35 мм.
+
+### Перед друком і встановленням
+
+Виміряйте відстані між центрами отворів стека й рами та виберіть відповідний STL. Перевірте діаметри отворів, довжину гвинтів, доступний простір і зазор до електроніки та проводів.
+
+### Файли моделі
+
+- [STL: 44_to_30.5_stack_adapter](https://github.com/dmytr0/glory_to_ukraine/blob/master/stack_mount/44_to_30.5_stack_adapter.stl)
+- [STL: 30.5_to_35_adapter](https://github.com/dmytr0/glory_to_ukraine/blob/master/stack_mount/30.5_to_35_adapter.stl)
+- [Папка проєкту з фотографіями](https://github.com/dmytr0/glory_to_ukraine/tree/master/stack_mount)

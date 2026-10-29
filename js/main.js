@@ -1,4 +1,5 @@
 // js/main.js - оновлена версія з URL routing
+const normalizeTag = tag => tag.trim().toLocaleLowerCase('uk');
 class ModelsCatalog {
     constructor() {
         this.filteredModels = [...modelsData];
@@ -31,12 +32,12 @@ class ModelsCatalog {
         const url = new URL(window.location.href);
         const categoryFilter = document.getElementById('category-filter');
         const searchFilter = document.getElementById('search-filter');
-        const allowedTags = new Set(modelsData.flatMap(model => model.tags));
+        const allowedTags = new Set(modelsData.flatMap(model => model.tags.map(normalizeTag)));
         const category = url.searchParams.get('category') || '';
 
         categoryFilter.value = Object.prototype.hasOwnProperty.call(CATEGORIES, category) ? category : '';
         searchFilter.value = url.searchParams.get('search') || '';
-        this.selectedTags = [...new Set(url.searchParams.getAll('tag'))].filter(tag => allowedTags.has(tag));
+        this.selectedTags = [...new Set(url.searchParams.getAll('tag').map(normalizeTag))].filter(tag => allowedTags.has(tag));
         this.updateSelectedTagsDisplay();
         this.updateTagFilterOptions();
     }
@@ -342,15 +343,15 @@ class ModelsCatalog {
 
         const applyFilters = async ({ updateURL = true } = {}) => {
             const categoryValue = categoryFilter.value;
-            const searchValue = searchFilter.value.toLowerCase();
+            const searchValue = searchFilter.value.trim().toLocaleLowerCase('uk');
 
             this.filteredModels = modelsData.filter(model => {
                 const categoryMatch = !categoryValue || model.category === categoryValue;
                 const tagMatch = this.selectedTags.length === 0 ||
-                    this.selectedTags.every(selectedTag => model.tags.includes(selectedTag));
+                    this.selectedTags.every(selectedTag => model.tags.map(normalizeTag).includes(selectedTag));
 
                 const searchMatch = !searchValue ||
-                    model.title.toLowerCase().includes(searchValue);
+                    [model.title, ...model.tags].some(value => value.toLocaleLowerCase('uk').includes(searchValue));
 
                 return categoryMatch && tagMatch && searchMatch;
             });
@@ -420,7 +421,7 @@ class ModelsCatalog {
     }
 
     updateTagFilterOptions() {
-        const allTags = [...new Set(modelsData.flatMap(model => model.tags))].sort();
+        const allTags = [...new Set(modelsData.flatMap(model => model.tags.map(normalizeTag)))].sort();
         const query = document.getElementById('tag-search').value.trim().toLocaleLowerCase('uk');
         const availableTags = allTags.filter(tag =>
             !this.selectedTags.includes(tag) && (!query || tag.toLocaleLowerCase('uk').includes(query))
